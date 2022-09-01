@@ -1,13 +1,16 @@
-import { Header, Footer, Input, TodoList } from '../'
+import { StyledHeader } from '../Header/Header';
+import Input from '../Input/Input';
+import TodoList from '../TodoList/TodoList';
+import Footer from '../Footer/Footer';
 
 
-function Container() {
+function Container({themeToggle}) {
   return (
     <main>
-      <Header />
+      <StyledHeader themeToggle={themeToggle}  />
       <Input />
       <TodoList />
-      <Input />
+      <Footer />
     </main>
   )
 }

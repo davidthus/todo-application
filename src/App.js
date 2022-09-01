@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { lighttheme, darktheme, GlobalStyles } from './themes.js'
-import { Container } from './components';
+import { StyledContainer } from './components/Container/Container.style';
 
 const StyledApp = styled.div`
   width: 100%;
@@ -21,7 +21,7 @@ const StyledApp = styled.div`
   }
 
   @media screen and (min-width: 800px) {
-    padding-top: 8.75rem;
+    padding-top: 4rem;
   }
 `
 
@@ -41,8 +41,7 @@ function App() {
     <ThemeProvider theme={Theme === 'light' ? lighttheme : darktheme}>
       <GlobalStyles />
     <StyledApp>
-      {/* <button onClick={() => themeToggle()}>Click me</button> */}
-      <Container />
+      <StyledContainer themeToggle={themeToggle} />
     </StyledApp>
     </ThemeProvider>
   );
