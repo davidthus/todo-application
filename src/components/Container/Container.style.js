@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Container from './Container.jsx';
 
-export const StyledContainer = styled(Container)`
+export const StyledContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;

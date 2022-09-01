@@ -7,6 +7,13 @@ export const StyledLogo = styled.h1`
   margin-right: auto;
   letter-spacing: 0.937rem;
   text-transform: uppercase;
+
+  @media screen and (max-width: 800px){
+    & {
+      font-size: 1.7rem;
+      line-height: 1.7rem;
+    }
+  }
 `
 
 export const StyledButton = styled.button`
@@ -17,4 +24,11 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+`
+
+export const StyledHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `

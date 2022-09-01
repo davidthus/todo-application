@@ -1,17 +1,18 @@
-import { StyledHeader } from '../Header/Header';
+import Header from '../Header/Header';
 import Input from '../Input/Input';
 import TodoList from '../TodoList/TodoList';
 import Footer from '../Footer/Footer';
+import { StyledContainer } from './Container.style.js';
 
 
 function Container({themeToggle}) {
   return (
-    <main>
-      <StyledHeader themeToggle={themeToggle}  />
+    <StyledContainer>
+      <Header themeToggle={themeToggle}  />
       <Input />
       <TodoList />
       <Footer />
-    </main>
+    </StyledContainer>
   )
 }
 

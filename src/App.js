@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { lighttheme, darktheme, GlobalStyles } from './themes.js'
-import { StyledContainer } from './components/Container/Container.style';
+import Container from './components/Container/Container.jsx';
 
 const StyledApp = styled.div`
   width: 100%;
@@ -41,7 +41,7 @@ function App() {
     <ThemeProvider theme={Theme === 'light' ? lighttheme : darktheme}>
       <GlobalStyles />
     <StyledApp>
-      <StyledContainer themeToggle={themeToggle} />
+      <Container themeToggle={themeToggle} />
     </StyledApp>
     </ThemeProvider>
   );
