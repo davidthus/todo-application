@@ -1,8 +1,13 @@
-import React from 'react'
+import Input from '../Input/Input';
+import Config from '../Config/Config';
+import { StyledForm } from './TodoList.style.js';
 
 function TodoList() {
   return (
-    <div>TodoList</div>
+    <StyledForm>
+      <Input/>
+      <Config />
+    </StyledForm>
   )
 }
 

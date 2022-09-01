@@ -30,7 +30,7 @@ export const darktheme = {
 
 export const GlobalStyles = createGlobalStyle`
   *:focus {
-    outline: 2px dotted ${props => props.theme.colorTextActive}
+    /* outline: 2px dotted ${props => props.theme.colorTextActive} */
   }
 
   * {
