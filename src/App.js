@@ -1,24 +1,35 @@
-import './App.css';
 import { useState, useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { lighttheme, darktheme, GlobalStyles } from './themes.js'
+import { Container } from './components';
 
 const StyledApp = styled.div`
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem;
   background-color: ${props => props.theme.colorBg};
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: ${props => props.theme.bgImageDesktop};
+
+  @media screen and (max-width: 375px) {
+    background-image: ${props => props.theme.bgImageMobile};
+  }
+
+  @media screen and (min-width: 800px) {
+    padding-top: 8.75rem;
+  }
 `
 
 function App() {
   const [ Theme, setTheme ] = useState(localStorage.getItem('Theme') || 'dark');
 
   useEffect(() => {
-    localStorage.setItem('Theme', Theme);
-  
-    // return () => {
-    //   localStorage.removeItem('Theme');
-    // }
+    localStorage.setItem("Theme", Theme);
   }, [Theme])
   
 
@@ -30,9 +41,8 @@ function App() {
     <ThemeProvider theme={Theme === 'light' ? lighttheme : darktheme}>
       <GlobalStyles />
     <StyledApp>
-      <button onClick={() => themeToggle()}>
-        Change Theme
-      </button>
+      {/* <button onClick={() => themeToggle()}>Click me</button> */}
+      <Container />
     </StyledApp>
     </ThemeProvider>
   );
