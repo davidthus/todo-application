@@ -29,12 +29,8 @@ export const darktheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-  *:focus {
-    /* outline: 2px dotted ${props => props.theme.colorTextActive} */
-  }
 
   * {
     transition: 0.5s ease-in-out;
-    overflow-x: hidden;
   }
 `;

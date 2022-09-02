@@ -1,20 +1,22 @@
 import { StyledInput, StyledDiv } from './Input.style.js';
-import { useState } from "react";
+import useTodo from '../../hooks/useTodo';
 
 function Input() {
-  const [ currentInput, setCurrentInput ] = useState("");
+  const { addTodo, todos } = useTodo();
 
-  function handleKeyDown(e){
-    // if(e.key === "Enter" && e.target.value.trim()){
 
-    // }
+  const handleKeyDown = event => {
 
-    setCurrentInput(e.target.value);
-  }
+    if (event.key === "Enter" && event.target.value.trim()) {
+      addTodo({ todo: event.target.value, completed: false, id: todos.length - 1});
+      event.target.value = "";
+    }
+  };
+  
 
   return (
     <StyledDiv>
-      <StyledInput value={currentInput} onKeyDown={handleKeyDown} placeholder="Create a new todo..." type="text" label="Add a new item to the todo list here" />
+      <StyledInput onKeyDown={handleKeyDown} placeholder="Create a new todo..." type="text" label="Add a new item to the todo list here" />
     </StyledDiv>
   )
 }
