@@ -9,11 +9,16 @@ export const StyledForm = styled.form`
       margin-bottom: 3rem;
     }
   }
-`
+`;
 
 export const StyledContainer = styled.div`
   margin: 0;
   padding: 0;
-  box-shadow: ${props => props.theme.boxShadow};
-`
+  box-shadow: ${(props) => props.theme.boxShadow};
+`;
 
+export const StyledUl = styled.div`
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: hidden;
+`;

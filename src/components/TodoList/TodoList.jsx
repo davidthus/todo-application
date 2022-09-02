@@ -1,9 +1,8 @@
-import Input from '../Input/Input';
-import Config from '../Config/Config';
-import Todo from '../Todo/Todo';
-import { StyledForm, StyledContainer } from './TodoList.style.js';
-import useTodo from '../../hooks/useTodo';
-
+import useTodo from "../../hooks/useTodo";
+import Config from "../Config/Config";
+import Input from "../Input/Input";
+import Todo from "../Todo/Todo";
+import { StyledContainer, StyledForm, StyledUl } from "./TodoList.style.js";
 
 function TodoList() {
   const { filteredTodos, updateTodo, deleteTodo } = useTodo();
@@ -11,16 +10,21 @@ function TodoList() {
 
   return (
     <StyledForm>
-      <Input/>
+      <Input />
 
-      <StyledContainer>{
-        // filteredTodos.map(todo => {
-        //   return <Todo updateTodo={updateTodo} deleteTodo={deleteTodo} todo={todo} />
-        // })
-      }<Config />
+      <StyledContainer>
+        <StyledUl>
+          {
+            <Todo />
+            // filteredTodos.map(todo => {
+            //   return <Todo updateTodo={updateTodo} deleteTodo={deleteTodo} todo={todo} />
+            // })
+          }
+        </StyledUl>
+        <Config />
       </StyledContainer>
     </StyledForm>
-  )
+  );
 }
 
-export default TodoList
+export default TodoList;

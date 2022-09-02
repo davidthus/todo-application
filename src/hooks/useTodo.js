@@ -7,8 +7,7 @@ export default function useTodo(){
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
-    console.log(todos)
-    console.log(localStorage);
+    console.log(todos);
   }, [todos])
 
   // handle adding a todo to the todo array in localstorage
@@ -19,35 +18,35 @@ export default function useTodo(){
 
   // handle deleting a todo from localstorage
 
-  const deleteTodo = (id) => {
-    //excludes the todo with the id passed in
-    setTodos(todos.filter(todo => todo.id !== id));
-  }
-
-  // fetch all the filtered todos
-
-  // const getItemsLeft = () => {
-  //   return filteredTodos;
+  // const deleteTodo = (id) => {
+  //   //excludes the todo with the id passed in
+  //   setTodos(todos.filter(todo => todo.id !== id));
   // }
 
-  // delete all todos with the property of completed set to true
+  // // fetch all the filtered todos
 
-  const clearCompleted = () => {
-    setTodos(todos.filter(todo => todo.completed !== false))
-  }
+  // // const getItemsLeft = () => {
+  // //   return filteredTodos;
+  // // }
+
+  // // delete all todos with the property of completed set to true
+
+  // const clearCompleted = () => {
+  //   setTodos(todos.filter(todo => todo.completed !== false))
+  // }
 
   // handle updating a todo to either completed or not completed
 
-  const updateTodo = (todo) => {
+  // const updateTodo = (todo) => {
 
-  }
+  // }
 
   return {
     addTodo,
-    deleteTodo,
+    // deleteTodo,
     filteredTodos,
-    clearCompleted,
-    updateTodo,
+    // clearCompleted,
+    // updateTodo,
     setFilteredTodos,
     todos
   }
