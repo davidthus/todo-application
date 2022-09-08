@@ -1,14 +1,16 @@
 import { StyledInput, StyledDiv } from './Input.style.js';
-import useTodo from '../../hooks/useTodo';
+import { ACTIONS } from '../TodoList/todoReducer'
 
-function Input() {
-  const { addTodo, todos } = useTodo();
+
+function Input({dispatch}) {
 
 
   const handleKeyDown = event => {
-
     if (event.key === "Enter" && event.target.value.trim()) {
-      addTodo({ todo: event.target.value, completed: false, id: todos.length - 1});
+      event.preventDefault();
+      dispatch({type: ACTIONS.ADD_TODO, payload: {
+        todo: { todo: event.target.value, completed: false, id: Date.now() }
+      }});
       event.target.value = "";
     }
   };

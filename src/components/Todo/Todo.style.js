@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+// const slideOff = styled.keyframes`
+//   from {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+
+//   to {
+//     transform: translateX(-120px);
+//     opacity: 0;
+//   }
+// `
+
 export const StyledTodo = styled.li`
   display: flex;
   width: 100%;
@@ -10,6 +22,7 @@ export const StyledTodo = styled.li`
   background: ${(props) => props.theme.colorSurface};
   color: ${(props) => props.theme.colorTextActive};
   transition: border 1s, background 1s, color 1s;
+
 
   @media screen and (min-width: 600px) {
     & {
@@ -32,6 +45,10 @@ export const StyledButton = styled.button`
   background: rgb(0 0 0 / 0%);
   cursor: pointer;
   transition: opacity 0.3s;
+
+  ${StyledTodo}:hover & {
+    opacity: 1;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -53,9 +70,9 @@ export const StyledSpan = styled.span`
   margin-right: 1.5rem;
   border-radius: 50%;
   padding: 1px;
-  background: ${(props) => props.theme.colorBorder};
-  transition: background 1s;
-
+  background: ${(props) => props.toggled ? props.theme.gradient : props.theme.colorBorder};
+  transition: 1s;
+  
   &::before {
     content: "";
     position: absolute;
@@ -69,7 +86,7 @@ export const StyledSpan = styled.span`
     opacity: 0;
     transition: opacity 0.5s;
 
-    &:hover {
+    ${StyledLabel}:hover &{
       opacity: 1;
     }
   }
@@ -84,7 +101,7 @@ export const NestedSpan = styled.span`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: ${(props) => props.theme.colorSurface};
+  background: ${(props) => props.toggled ? props.theme.gradient : props.theme.colorSurface};
   transition: background 1s;
 `;
 
@@ -93,6 +110,7 @@ export const StyledText = styled.span`
   font-size: 0.75rem;
   line-height: 1rem;
   cursor: pointer;
+  color: ${(props) => props.toggled ? props.theme.colorTextCompleted : props.theme.colorTextActive};
 
   @media screen and (min-width: 600px) {
     & {
@@ -105,9 +123,9 @@ export const StyledText = styled.span`
     position: absolute;
     top: 50%;
     left: 0;
-    width: 0;
+    width: ${props => props.toggled ? '100%' : '0'};
     height: 1px;
-    background: ${(props) => props.theme.colorTextActive};
+    background: ${(props) => props.toggled ? props.theme.colorTextCompleted : props.theme.colorTextActive};
     transition: width 1s, background 1s;
   }
 `;

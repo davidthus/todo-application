@@ -1,30 +1,29 @@
 import { useState, useEffect } from 'react';
 import { StyledContainer, StyledSpan, StyledButton, StyledFilter, StyledDiv } from './Config.style';
-import useTodo from '../../hooks/useTodo';
+import { ACTIONS } from '../TodoList/todoReducer';
 
-
-function Config() {
+function Config({ dispatch, state}) {
   const [ filter, setFilter ] = useState('all');
-  const { setFilteredTodos, todos } = useTodo();
+  const [ itemsLeft, setItemsLeft ] = useState(state.todos.filter(todo => !todo.completed).length);
 
+  function handleClear(e){
+    e.preventDefault();
+    dispatch({ type: ACTIONS.CLEAR_COMPLETED })
+  }
 
   useEffect(() => {
-    // sort the todos every time filter changes here
-    console.log(todos)
-    if(filter === 'active'){
-      setFilteredTodos(todos.filter(todo => todo.completed === false))
-      return;
-    } else if (filter === 'completed'){
-      setFilteredTodos(todos.filter(todo => todo.completed === true))
-      return;
-    }
-  }, [todos, filter, setFilteredTodos])
+    setItemsLeft(state.todos.filter(todo => !todo.completed).length);
+  }, [state])
+
+  useEffect(() => {
+    dispatch({type: ACTIONS.SET_FILTER, payload: {filter: filter}})
+  }, [filter, dispatch])
   
 
   return (
     <StyledContainer>
       <StyledSpan>
-        {todos.filter(todo => !todo.completed).length} items left
+        {itemsLeft} items left
       </StyledSpan>
 
       <StyledDiv>
@@ -33,7 +32,7 @@ function Config() {
         <StyledFilter active={ filter === 'completed' ? true : false} onClick={(e) => { e.preventDefault(); setFilter('completed')}}>Completed</StyledFilter>
       </StyledDiv>
 
-      <StyledButton onClick={(e) => { e.preventDefault()}}>
+      <StyledButton onClick={handleClear}>
         Clear Completed
       </StyledButton>
     </StyledContainer>
